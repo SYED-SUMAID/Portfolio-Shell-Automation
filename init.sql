@@ -1,25 +1,29 @@
-CREATE USER syed WITH PASSWORD 'sum@6;
-CREATE DATABASE websitedb OWNER sum;
 
--- Connect to the new database 
-\c portfolio_db
-SET ROLE sum;
+-- Create PostgreSQL user
+CREATE USER jhon WITH PASSWORD 'jhon doe';
 
--- Drop the table if it already exists
+-- Create database
+CREATE DATABASE restaurant_book OWNER jhon;
 
--- Create the education table (What step 5 is doing)
-CREATE TABLE IF NOT EXISTS education (
+-- Connect to the new database
+\c restaurant_book
+
+-- Create dining table
+CREATE TABLE dinning (
     id SERIAL PRIMARY KEY,
-    course_name VARCHAR(255) NOT NULL,
-    session VARCHAR(50) NOT NULL,
-    cgpa NUMERIC(3, 2) NOT NULL,
-    institute VARCHAR(255) NOT NULL
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL,
+    phone VARCHAR(20),
+    date DATE NOT NULL,
+    time TIME NOT NULL,
+    guests INTEGER NOT NULL
 );
 
-TRUNCATE TABLE education;
-
--- Insert sample portfolio data
-INSERT INTO education (course_name, session, cgpa, institute) VALUES 
-('B.Tech Computer Science & Engineering', '2019-2023', 8.75, 'NIT Srinagar'),
-('Diploma in Artificial Intelligence', '2023-2024', 9.10, 'CDAC Pune'),
-('Cloud Computing Fundamentals', 'Summer 2022', 8.90, 'AWS Academy');
+-- Insert sample values
+INSERT INTO dinning
+(name, email, phone, date, time, guests)
+VALUES
+('Ali Khan', 'ali@gmail.com', '9999999991', '2026-08-20', '19:00', 2),
+('Sumaid Ahmed', 'sumaid@gmail.com', '9999999992', '2026-08-21', '20:00', 4),
+('Omar Malik', 'omar@gmail.com', '9999999993', '2026-08-22', '18:30', 3),
+('Ayaan Shah', 'ayaan@gmail.com', '9999999994', '2026-08-23', '21:00', 5);
