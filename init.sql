@@ -1,29 +1,40 @@
 
 -- Create PostgreSQL user
-CREATE USER jhon WITH PASSWORD 'jhon doe';
+-- Create PostgreSQL user
+CREATE USER code WITH PASSWORD '12345';
 
--- Create database
-CREATE DATABASE restaurant_book OWNER jhon;
+-- Create database and make code its owner
+CREATE DATABASE vn7 OWNER code;
 
 -- Connect to the new database
-\c restaurant_book
+\c vn7
 
--- Create dining table
-CREATE TABLE dinning (
+-- Give code full privileges on the database
+GRANT ALL PRIVILEGES ON DATABASE vn7 TO code;
+
+-- Create the table
+CREATE TABLE sm_users (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
-    email VARCHAR(150) NOT NULL,
+    time TIME,
+    job VARCHAR(100),
+    course VARCHAR(100),
+    email VARCHAR(150),
     phone VARCHAR(20),
-    date DATE NOT NULL,
-    time TIME NOT NULL,
-    guests INTEGER NOT NULL
+    gender VARCHAR(20)
 );
 
+-- Give code full privileges on the table
+GRANT ALL PRIVILEGES ON TABLE sm_users TO code;
+
+-- Give permissions on the SERIAL sequence
+GRANT USAGE, SELECT, UPDATE ON SEQUENCE sm_users_id_seq TO code;
+
 -- Insert sample values
-INSERT INTO dinning
-(name, email, phone, date, time, guests)
+INSERT INTO sm_users
+(name, time, job, course, email, phone, gender)
 VALUES
-('Ali Khan', 'ali@gmail.com', '9999999991', '2026-08-20', '19:00', 2),
-('Sumaid Ahmed', 'sumaid@gmail.com', '9999999992', '2026-08-21', '20:00', 4),
-('Omar Malik', 'omar@gmail.com', '9999999993', '2026-08-22', '18:30', 3),
-('Ayaan Shah', 'ayaan@gmail.com', '9999999994', '2026-08-23', '21:00', 5);
+('Rahul Sharma', '10:00', 'Software Developer', 'B.Tech', 'rahul@gmail.com', '9876543211', 'Male'),
+('Sara Ahmed', '11:30', 'Data Analyst', 'MCA', 'sara@gmail.com', '9876543212', 'Female'),
+('Ayaan Malik', '14:00', 'Business Analyst', 'BBA', 'ayaan@gmail.com', '9876543213', 'Male'),
+('Aisha Khan', '16:30', 'HR Executive', 'BBA', 'aisha@gmail.com', '9876543214', 'Female');
