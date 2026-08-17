@@ -4,14 +4,14 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 $conn = pg_connect(
-    "host=localhost port=5432 dbname=restaurant_book user=jhon password='jhon doe'"
+    "host=localhost port=5432 dbname=vn7 user=code password='12345'"
 );
 
 if (!$conn) {
     die("CONNECTION FAILED");
 }
 
-$result = pg_query($conn, "SELECT * FROM dinning");
+$result = pg_query($conn, "SELECT * FROM sm_users");
 
 if (!$result) {
     die("QUERY FAILED: " . pg_last_error($conn));
