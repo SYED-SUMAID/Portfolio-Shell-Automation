@@ -1,16 +1,11 @@
-
--- Create PostgreSQL user
 -- Create PostgreSQL user
 CREATE USER code WITH PASSWORD '12345';
 
--- Create database and make code its owner
+-- Create database owned by code
 CREATE DATABASE vn7 OWNER code;
 
 -- Connect to the new database
 \c vn7
-
--- Give code full privileges on the database
-GRANT ALL PRIVILEGES ON DATABASE vn7 TO code;
 
 -- Create the table
 CREATE TABLE sm_users (
@@ -23,12 +18,6 @@ CREATE TABLE sm_users (
     phone VARCHAR(20),
     gender VARCHAR(20)
 );
-
--- Give code full privileges on the table
-GRANT ALL PRIVILEGES ON TABLE sm_users TO code;
-
--- Give permissions on the SERIAL sequence
-GRANT USAGE, SELECT, UPDATE ON SEQUENCE sm_users_id_seq TO code;
 
 -- Insert sample values
 INSERT INTO sm_users
