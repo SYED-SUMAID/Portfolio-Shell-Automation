@@ -24,13 +24,13 @@ if (!$result) {
 
 <head>
 
-    <title>Restaurant Booking</title>
+    <title>STUDENT-Booking</title>
 
 </head>
 
 <body>
 
-    <h1>Restaurant Bookings</h1>
+    <h1>COURSES</h1>
 
     <p>Database connected successfully.</p>
 
