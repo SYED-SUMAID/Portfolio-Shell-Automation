@@ -21,7 +21,7 @@ CREATE TABLE sm_users (
 GRANT ALL PRIVILEGES ON TABLE sm_users TO code;
 GRANT USAGE, SELECT ON SEQUENCE sm_users_id_seq TO code;
 
-RUNCATE TABLE sm_users RESTART IDENTITY;
+TRUNCATE TABLE sm_users RESTART IDENTITY;
 
 INSERT INTO sm_users
 (name, time, job, course, email, phone, gender)
