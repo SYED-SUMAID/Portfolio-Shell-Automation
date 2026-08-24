@@ -18,8 +18,9 @@ CREATE TABLE sm_users (
     phone VARCHAR(20),
     gender VARCHAR(20)
 );
+GRANT ALL PRIVILEGES ON TABLE sm_users TO code;
+GRANT USAGE, SELECT ON SEQUENCE sm_users_id_seq TO code;
 
--- Insert sample values
 INSERT INTO sm_users
 (name, time, job, course, email, phone, gender)
 VALUES
