@@ -1,8 +1,3 @@
--- Create PostgreSQL user
-CREATE USER code WITH PASSWORD '12345';
-
--- Create database owned by code
-CREATE DATABASE vn7 OWNER code;
 
 -- Connect to the new database
 \c vn7
